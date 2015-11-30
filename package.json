@@ -1,0 +1,17 @@
+{
+  "name": "ch-address-book",
+  "version": "1.0.0",
+  "description": "Change Heroes Address Book Test App",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.2.0",
+    "connect": "^3.4.0",
+    "serve-static": "^1.10.0"
+  }
+}
