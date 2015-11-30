@@ -1,5 +1,7 @@
 Haowei's version of CH Address Book
 
+Skeleton code from: https://github.com/edvisor-io/ch-address-book
+
 # Instructions
 
 1. Build an address book using the attached wireframe. All contacts should be
