@@ -1,23 +1,30 @@
 <!doctype html>
 
-<html>
+<html ng-app="chApp">
 <head>
 	<!-- META -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title></title>
+    <!-- Prevent favicon requests -->
+    <link rel="icon" href="data:;base64,=">
+
+	<title>{{ $root.title }}</title>
 
 	<!-- CSS -->
 
 
 	<!-- SCRIPTS -->
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
 </head>
 
-<body>
-
-<!-- CONTENT -->
-
+<body ng-controller="addressBookCtrl" ng-cloak>
+    <header ng-include="headerTemplate || 'partials/header.html'">
+    </header>
+    <section ng-include="partials/section.html">
+    </section>
 </body>
 </html>
