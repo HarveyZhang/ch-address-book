@@ -1,6 +1,6 @@
 {
   "name": "ch-address-book",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Change Heroes Address Book Test App",
   "main": "server.js",
   "scripts": {
