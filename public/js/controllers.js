@@ -7,34 +7,31 @@ angular.module('addressBookControllers', [])
 
         $rootScope.title = DEFAULT_TITLE;
         $scope.state = {
-            loading: true,
-            editing: false
+            loading: true
         };
-        $scope.contacts = [];
+        $scope.contacts = {};
 
         addressBookService.query().then(function(contacts) {
             $scope.contacts = contacts;
             $scope.state.loading = false;
         });
-
-        $scope.entrySelected = function(userId) {
-            $scope.selected = angular.extend({}, $scope.contacts[userId]);
-            $rootScope.title = DEFAULT_TITLE + ' - ' +
-                $scope.selected.firstname + ' ' + $scope.selected.lastname;
+    }])
+.controller('detailController', ['$scope', '$routeParams', 'addressBookService',
+    function($scope, $routeParams, addressBookService) {
+        $scope.state = {
+            loading: true,
+            editing: false
         };
+
+        addressBookService.get($routeParams.userId).then(function(contact) {
+            $scope.selected = angular.extend({}, contact);
+            $scope.state.loading = false;
+        });
 
         $scope.submit = function(form, newContact) {
             if (form.$valid) {
-                angular.extend($scope.contacts[newContact.id], newContact);
+                addressBookService.save(newContact.id, newContact);
                 $scope.state.editing = false;
             }
         };
-
-        $scope.reset = function(form, userId) {
-            if (form) {
-              form.$setPristine();
-              form.$setUntouched();
-            }
-            $scope.selected = angular.extend({}, $scope.contacts[userId]);
-        }
     }]);

@@ -16,29 +16,43 @@ angular.module('addressBookServices', [])
             }
         };
     }])
-.factory('addressBookService', ['addressBook',
-    function(addressBook) {
+.factory('addressBookService', ['addressBook', '$q',
+    function(addressBook, $q) {
+        var contactCache;
         var model = addressBook.query(function(contacts) {
             var contactsMap = {};
-            (contacts || []).forEach(function(contact, index) {
+            contacts = contacts || [];
+            contacts.forEach(function(contact, index) {
                 contact.id = index;
                 contactsMap[index] = contact;
             });
-            return contacts || [];
+            contactCache = contactsMap;
+            return contactsMap;
         });
         return {
             query: function() {
-                return model.then(function(model) {
+                var deferred;
+                if (contactCache) {
+                    deferred = $q.defer();
+                    deferred.resolve(contactCache);
+                }
+                return deferred ? deferred.promise : model.then(function(model) {
                     return model;
                 });
             },
             get: function(userId) {
-                return model.then(function(model) {
+                var deferred;
+                if (contactCache) {
+                    deferred = $q.defer();
+                    deferred.resolve(contactCache[userId]);
+                }
+                return deferred ? deferred.promise : model.then(function(model) {
                     return model[userId];
                 });
             },
-            save: function() {
-                console.log('TODO: save');
+            save: function(userId, newContact) {
+                // dummy save
+                angular.extend(contactCache[userId], newContact);
             }
         }
     }]);

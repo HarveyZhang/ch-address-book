@@ -1,0 +1,72 @@
+<section ng-show="state.loading">
+    <i class="fa fa-spinner"></i>
+    <span>{{::'Loading' | locale}}...</span>
+</section>
+<form novalidate name="form"
+      ng-show="!state.loading">
+    <section ng-show="selected" id="edit-buttons">
+        <div class="field">
+            <label>
+                <button type="button"
+                        ng-show="!state.editing"
+                        ng-click="state.editing = true">
+                    <span>{{::'Edit' | locale}}</span>
+                </button>
+                <button type="submit"
+                        ng-show="state.editing"
+                        ng-click="submit(form, selected)">
+                    <span>{{::'Done' | locale}}</span>
+                </button>
+            </label>
+        </div>
+    </section>
+    <div class="section-title"
+         ng-show="selected">
+        <label>
+            <span ng-show="!state.editing">
+                {{selected.firstname}}&nbsp;{{selected.lastname}}
+            </span>
+            <div class="field"
+                 ng-show="state.editing">
+                <input type="text"
+                    ng-model="selected.firstname"
+                    required>
+                <input type="text"
+                    ng-model="selected.lastname"
+                    required>
+            </div>
+        </label>
+    </div>
+    <section ng-show="selected">
+        <div class="field">
+            <label>{{::'Phone' | locale}}</label>
+            <div>
+                <label ng-show="!state.editing">{{selected.phone | phoneNumber}}</label>
+                <input type="text"
+                    ng-model="selected.phone"
+                    ng-show="state.editing"
+                    required>
+            </div>
+        </div>
+        <div class="field">
+            <label>{{::'Email' | locale}}</label>
+            <div>
+                <label ng-show="!state.editing">{{selected.email}}</label>
+                <input type="email"
+                    ng-model="selected.email"
+                    ng-show="state.editing"
+                    required>
+            </div>
+        </div>
+        <div class="field">
+            <label>{{::'Address' | locale}}</label>
+            <div>
+                <label ng-show="!state.editing">{{selected.address}}</label>
+                <input type="text"
+                    ng-model="selected.address"
+                    ng-show="state.editing"
+                    required>
+            </div>
+        </div>
+    </section>
+</form>

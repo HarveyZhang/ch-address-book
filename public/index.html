@@ -22,9 +22,14 @@
     <script src="js/controllers.js"></script>
     <script src="js/services.js"></script>
     <script src="js/filters.js"></script>
+
+    <!-- BASE TAG -->
+    <base href="/">
 </head>
 
-<body ng-controller="mainController" class="flex flex-column">
+<body ng-controller="mainController"
+      class="flex flex-column"
+      ng-cloak>
     <header ng-include="headerTemplate || 'partials/header.html'">
     </header>
     <section ng-include="'partials/section.html'"
@@ -32,7 +37,8 @@
         class="flex flex-row">
     </section>
     <section ng-show="state.loading">
-        {{::'Loading' | locale}}...
+        <i class="fa fa-spinner"></i>
+        <span>{{::'Loading' | locale}}...</span>
     </section>
 </body>
 </html>

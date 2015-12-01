@@ -1,19 +1,22 @@
 'use strict';
 
 angular.module('chApp', [
+    'ngRoute',
     'addressBookControllers',
     'addressBookServices',
     'addressBookFilters'
-]);
+])
+.config(['$routeProvider', '$locationProvider',
+    function($routeProvider, $locationProvider) {
+        $routeProvider.
+        when('/contacts/:userId', {
+            templateUrl: '../partials/detail.html',
+            controller: 'detailController'
+        }).
+        otherwise({
+            redirectTo: '/'
+        });
 
-// chApp.config(['$routeProvider',
-//     function($routeProvider) {
-//         $routeProvider.
-//         when('/contacts', {
-//             templateUrl: 'index.html',
-//             controller: 'listController'
-//         }).
-//         otherwise({
-//             redirectTo: '/contacts'
-//         });
-//     }]);
+        // use HTML5 strategy if available
+        $locationProvider.html5Mode(true);
+    }]);

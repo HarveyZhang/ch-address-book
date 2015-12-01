@@ -5,7 +5,7 @@ angular.module('addressBookFilters', [])
     // locale translation filter mockup
     return function(input) {
         return input;
-    }
+    };
 })
 .filter('phoneNumber', function() {
     // refer to:
@@ -54,3 +54,18 @@ angular.module('addressBookFilters', [])
         return (country + " (" + city + ") " + number).trim();
     };
 })
+.filter('search', function() {
+    return function(input, search) {
+        if (!input) return input;
+        if (!search) return input;
+        var expected = ('' + search).toLowerCase();
+        var result = {};
+        angular.forEach(input, function(value, key) {
+            var actual = ('' + value).toLowerCase();
+            if (actual.indexOf(expected) !== -1) {
+                result[key] = value;
+            }
+        });
+        return result;
+    };
+});
