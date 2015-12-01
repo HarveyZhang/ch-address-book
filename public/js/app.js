@@ -8,11 +8,11 @@ var chApp = angular.module('chApp', [
 chApp.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
-            when('/index', {
-                templateUrl: 'index.html',
-                controller: 'addressBookCtrl'
-            }).
-            otherwise({
-                redirectTo: '/index'
-            });
+        when('/contacts', {
+            templateUrl: 'index.html',
+            controller: 'listController'
+        }).
+        otherwise({
+            redirectTo: '/contacts'
+        });
     }]);
