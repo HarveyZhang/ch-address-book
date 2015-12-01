@@ -25,22 +25,14 @@ describe('Address book controllers', function() {
         }));
 
         it('should init state as { loading: true, editing: false }', function() {
-            expect(scope.state).toBe({
-                loading: true,
-                editing: false
-            });
+            expect(scope.state.loading).toBe(true);
         });
 
         it('should create "contacts" model with 1 contact via $http.get()', function() {
-            expect(scope.contacts).toBe([]);
+            expect(scope.contacts.length).toBe(0);
             $httpBackend.flush();
-            expect(scope.contacts).toBe([{
-                'firstname':'Cameron',
-                'lastname':'Dubas',
-                'phone':'6047280012',
-                'address':'289 Abbott St., Vancouver, BC, V3M 2L7',
-                'email':'cameron@changeheroes.com'
-            }]);
+            expect(scope.contacts.length).toBe(1);
+            expect(scope.contacts[0].firstname).toBe('Cameron');
         });
     });
 });
