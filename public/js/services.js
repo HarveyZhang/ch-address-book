@@ -1,8 +1,7 @@
 'use strict';
 
-var addressBookServices = angular.module('addressBookServices', []);
-
-addressBookServices.factory('addressBook', ['$http',
+angular.module('addressBookServices', [])
+.factory('addressBook', ['$http',
     function($http) {
         var RESOURCE_URI = 'assets/contacts.json';
         return {
@@ -16,9 +15,8 @@ addressBookServices.factory('addressBook', ['$http',
                 });
             }
         };
-    }]);
-
-addressBookServices.factory('addressBookService', ['addressBook',
+    }])
+.factory('addressBookService', ['addressBook',
     function(addressBook) {
         var model = addressBook.query(function(contacts) {
             var contactsMap = {};

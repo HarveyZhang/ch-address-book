@@ -1,15 +1,13 @@
 'use strict';
 
-var addressBookFilters = angular.module('addressBookFilters', []);
-
-addressBookFilters.filter('locale', function() {
+angular.module('addressBookFilters', [])
+.filter('locale', function() {
     // locale translation filter mockup
     return function(input) {
         return input;
     }
-});
-
-addressBookFilters.filter('phoneNumber', function() {
+})
+.filter('phoneNumber', function() {
     // refer to:
     // http://stackoverflow.com/questions/12700145/ +
     // format-telephone-and-credit-card-numbers-in-angularjs#answer-12728924

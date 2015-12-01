@@ -1,6 +1,6 @@
 'use strict';
 
-var chApp = angular.module('chApp', [
+angular.module('chApp', [
     'addressBookControllers',
     'addressBookServices',
     'addressBookFilters'

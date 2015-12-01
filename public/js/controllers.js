@@ -1,8 +1,6 @@
 'use strict';
 
-var addressBookControllers = angular.module('addressBookControllers', []);
-
-addressBookControllers
+angular.module('addressBookControllers', [])
 .controller('mainController', ['$scope', '$rootScope', 'addressBookService',
     function($scope, $rootScope, addressBookService) {
         var DEFAULT_TITLE = 'CH Address Book';
