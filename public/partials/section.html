@@ -18,30 +18,76 @@
 </nav>
 
 <div class="view-container">
-    <div class="section-title"
-         ng-show="selected">
-        <label>
-            {{selected.firstname}}&nbsp;{{selected.lastname}}
-        </label>
-    </div>
-    <section ng-show="selected">
-        <div class="field">
-            <label>{{::'Phone' | locale}}</label>
-            <div>
-                <label>{{selected.phone | phoneNumber}}</label>
+    <form novalidate name="form">
+        <section ng-show="selected">
+            <div class="field">
+                <label>
+                    <button type="button"
+                            ng-show="!state.editing"
+                            ng-click="state.editing = true">
+                        <span>{{::'Edit' | locale}}</span>
+                    </button>
+                    <button type="submit"
+                            ng-show="state.editing"
+                            ng-click="submit(form, selected)">
+                        <span>{{::'Done' | locale}}</span>
+                    </button>
+                    <button type="button"
+                            ng-show="state.editing"
+                            ng-click="reset(form, selected.id)">
+                        <span>{{::'Reset' | locale}}</span>
+                    </button>
+                </label>
             </div>
+        </section>
+        <div class="section-title"
+             ng-show="selected">
+            <label>
+                <span ng-show="!state.editing">
+                    {{selected.firstname}}&nbsp;{{selected.lastname}}
+                </span>
+                <div class="field"
+                     ng-show="state.editing">
+                    <input type="text"
+                        ng-model="selected.firstname"
+                        required>
+                    <input type="text"
+                        ng-model="selected.lastname"
+                        required>
+                </div>
+            </label>
         </div>
-        <div class="field">
-            <label>{{::'Email' | locale}}</label>
-            <div>
-                <label>{{selected.email}}</label>
+        <section ng-show="selected">
+            <div class="field">
+                <label>{{::'Phone' | locale}}</label>
+                <div>
+                    <label ng-show="!state.editing">{{selected.phone | phoneNumber}}</label>
+                    <input type="text"
+                        ng-model="selected.phone"
+                        ng-show="state.editing"
+                        required>
+                </div>
             </div>
-        </div>
-        <div class="field">
-            <label>{{::'Address' | locale}}</label>
-            <div>
-                <label>{{selected.address}}</label>
+            <div class="field">
+                <label>{{::'Email' | locale}}</label>
+                <div>
+                    <label ng-show="!state.editing">{{selected.email}}</label>
+                    <input type="email"
+                        ng-model="selected.email"
+                        ng-show="state.editing"
+                        required>
+                </div>
             </div>
-        </div>
-    </section>
+            <div class="field">
+                <label>{{::'Address' | locale}}</label>
+                <div>
+                    <label ng-show="!state.editing">{{selected.address}}</label>
+                    <input type="text"
+                        ng-model="selected.address"
+                        ng-show="state.editing"
+                        required>
+                </div>
+            </div>
+        </section>
+    </form>
 </div>

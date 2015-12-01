@@ -26,9 +26,9 @@
     <header ng-include="headerTemplate || 'partials/header.html'">
     </header>
     <section ng-include="'partials/section.html'"
-        ng-show="!loading">
+        ng-show="!state.loading">
     </section>
-    <section ng-show="loading">
+    <section ng-show="state.loading">
         {{::'Loading' | locale}}...
     </section>
 </body>
