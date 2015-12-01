@@ -2,6 +2,14 @@ Haowei's version of CH Address Book
 
 Skeleton code from: https://github.com/edvisor-io/ch-address-book
 
+## Installation
+
+1. Install Node and NPM
+2. Run npm install to install the dependencies.
+3. Start the server: `npm start`
+4. View in browser at `http://localhost:8080`
+5. To run unit test: `npm test`
+
 # Instructions
 
 1. Build an address book using the attached wireframe. All contacts should be
@@ -27,10 +35,3 @@ NOTE: use the contacts.json file in the public folder to populate the Address Bo
 ## Dependencies
 1. Angular 1.4.7
 2. Angular Router (https://code.angularjs.org/1.4.7/docs/api/ngRoute)
-
-## Installation
-
-1. Install Node and NPM
-2. Run npm install to install the dependencies.
-3. Start the server: `node server.js`
-4. View in browser at `http://localhost:8080`

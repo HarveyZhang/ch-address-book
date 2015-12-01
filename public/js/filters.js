@@ -55,6 +55,7 @@ angular.module('addressBookFilters', [])
     };
 })
 .filter('search', function() {
+    // currently only search for first name and last name
     return function(input, search) {
         if (!input) return input;
         if (!search) return input;

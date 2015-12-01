@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('addressBookServices', [])
+// raw data source service
 .factory('addressBook', ['$http',
     function($http) {
         var RESOURCE_URI = 'assets/contacts.json';
@@ -16,8 +17,10 @@ angular.module('addressBookServices', [])
             }
         };
     }])
+// the service that controllers actually work with
 .factory('addressBookService', ['addressBook', '$q',
     function(addressBook, $q) {
+        // cache processed data source for future use
         var contactCache;
         var model = addressBook.query(function(contacts) {
             var contactsMap = {};
@@ -30,6 +33,7 @@ angular.module('addressBookServices', [])
             return contactsMap;
         });
         return {
+            // query all contacts
             query: function() {
                 var deferred;
                 if (contactCache) {
@@ -40,6 +44,7 @@ angular.module('addressBookServices', [])
                     return model;
                 });
             },
+            // get a particular contact
             get: function(userId) {
                 var deferred;
                 if (contactCache) {
@@ -50,6 +55,7 @@ angular.module('addressBookServices', [])
                     return model[userId];
                 });
             },
+            // TODO: change save function when actually linked with a database
             save: function(userId, newContact) {
                 // dummy save
                 angular.extend(contactCache[userId], newContact);
