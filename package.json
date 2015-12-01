@@ -10,7 +10,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "angular": "1.4.7",
+    "angular-route": "1.4.7",
     "connect": "^3.4.0",
-    "serve-static": "^1.10.0"
+    "serve-static": "^1.10.0",
+    "karma": "^0.12.16",
+    "karma-chrome-launcher": "^0.1.4",
+    "karma-jasmine": "~0.1.0"
   }
 }
