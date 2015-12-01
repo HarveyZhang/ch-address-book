@@ -1,4 +1,21 @@
 <nav>
+    <div class="nav-title">
+        {{::'All Contacts' | locale}}
+    </div>
+    <div class="nav-query">
+        <input ng-model="query"
+            placeholder="{{::'Search' | locale}}">
+    </div>
+    <div class="nav-entries">
+        <ul>
+            <li ng-repeat="contact in addressBook.contacts | filter:query">
+                <label>
+                    {{contact.firstname}},&nbsp;{{contact.lastname}}
+                </label>
+            </li>
+        </ul>
+    </div>
 </nav>
 
-<div class="view-container" ng-view ng-cloak></div>
+<div class="view-container">
+</div>

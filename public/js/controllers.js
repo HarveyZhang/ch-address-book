@@ -1,13 +1,15 @@
 'use strict';
 
-var addressBookControllers = angular.module('addressBookControllers', []);
+var chApp = angular.module('chApp', [
+    'addressBookServices',
+    'addressBookFilters'
+]);
 
-addressBookControllers
-.controller('listController', ['$scope', '$rootScope',
-    function($scope, $rootScope) {
+// var addressBookControllers = angular.module('addressBookControllers', []);
+
+chApp
+.controller('listController', ['$scope', '$rootScope', 'addressBookService',
+    function($scope, $rootScope, addressBookService) {
         $rootScope.title = 'CH Address Book -- Haowei\'s Version';
-    }])
-.controller('detailController', ['$scope', '$rootScope',
-    function($scope, $rootScope) {
-        $rootScope.title = 'lala';
+        $scope.addressBook = addressBookService.get();
     }]);
