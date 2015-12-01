@@ -1,0 +1,90 @@
+.flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+nav {
+    width: 250px;
+    overflow: auto;
+    border-right: 1px solid #c8c8c8;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-orient: vertical;
+    background-color: #e6e6e6;
+}
+
+nav ul {
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    overflow: auto;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    -webkit-user-select: none;
+    cursor: default;
+}
+
+nav a {
+    padding: .4em .2em;
+    color: #000;
+    display: flex;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: #c8c8c8;
+    border-left-color: #c8c8c8;
+}
+
+.nav-query, .nav-title {
+    display: flex;
+    justify-content: center;
+}
+
+.nav-query input {
+    border-radius: 10px;
+    width: 90%;
+}
+
+.view-container {
+    background-color: #f6f6f6;
+    width: 100%;
+}
+
+.view-container section {
+    max-width: 100%;
+    margin-top: .5em;
+    margin-left: 1em;
+    width: calc(100% - 1em);
+}
+
+.view-container .section-title {
+    margin-top: 1em;
+    padding-left: 1em;
+}
+
+.view-container .field {
+    display: table-row;
+}
+
+.view-container .field > :first-child {
+    display: table-cell;
+    width: 20%;
+}
+
+.view-container .field > :not(:first-child) {
+    display: inline-flex;
+}
+
+#edit-buttons .field {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}

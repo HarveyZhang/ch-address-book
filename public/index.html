@@ -12,7 +12,8 @@
 	<title>{{ $root.title | locale }}</title>
 
 	<!-- CSS -->
-
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.css">
 
 	<!-- SCRIPTS -->
     <script src="//code.angularjs.org/1.4.7/angular.js"></script>
@@ -23,11 +24,12 @@
     <script src="js/filters.js"></script>
 </head>
 
-<body ng-controller="mainController">
+<body ng-controller="mainController" class="flex flex-column">
     <header ng-include="headerTemplate || 'partials/header.html'">
     </header>
     <section ng-include="'partials/section.html'"
-        ng-show="!state.loading">
+        ng-show="!state.loading"
+        class="flex flex-row">
     </section>
     <section ng-show="state.loading">
         {{::'Loading' | locale}}...
