@@ -1,15 +1,18 @@
 'use strict';
 
-var chApp = angular.module('chApp', [
-    'addressBookServices',
-    'addressBookFilters'
-]);
+var addressBookControllers = angular.module('addressBookControllers', []);
 
-// var addressBookControllers = angular.module('addressBookControllers', []);
-
-chApp
-.controller('listController', ['$scope', '$rootScope', 'addressBookService',
+addressBookControllers
+.controller('mainController', ['$scope', '$rootScope', 'addressBookService',
     function($scope, $rootScope, addressBookService) {
-        $rootScope.title = 'CH Address Book -- Haowei\'s Version';
+        var DEFAULT_TITLE = 'CH Address Book';
+
+        $rootScope.title = DEFAULT_TITLE;
         $scope.addressBook = addressBookService.get();
+
+        $scope.entrySelected = function(index) {
+            $scope.selected = $scope.addressBook.contacts[index];
+            $rootScope.title = DEFAULT_TITLE + ' - ' +
+                $scope.selected.firstname + ' ' + $scope.selected.lastname;
+        }
     }]);

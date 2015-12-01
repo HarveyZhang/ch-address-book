@@ -9,13 +9,39 @@
     <div class="nav-entries">
         <ul>
             <li ng-repeat="contact in addressBook.contacts | filter:query">
-                <label>
+                <a href="#" ng-click="entrySelected($index)">
                     {{contact.firstname}},&nbsp;{{contact.lastname}}
-                </label>
+                </a>
             </li>
         </ul>
     </div>
 </nav>
 
 <div class="view-container">
+    <div class="section-title"
+         ng-show="selected">
+        <label>
+            {{selected.firstname}}&nbsp;{{selected.lastname}}
+        </label>
+    </div>
+    <section ng-show="selected">
+        <div class="field">
+            <label>{{::'Phone' | locale}}</label>
+            <div>
+                <label>{{selected.phone | phoneNumber}}</label>
+            </div>
+        </div>
+        <div class="field">
+            <label>{{::'Email' | locale}}</label>
+            <div>
+                <label>{{selected.email}}</label>
+            </div>
+        </div>
+        <div class="field">
+            <label>{{::'Address' | locale}}</label>
+            <div>
+                <label>{{selected.address}}</label>
+            </div>
+        </div>
+    </section>
 </div>

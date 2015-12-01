@@ -2,8 +2,6 @@
 
 var addressBookServices = angular.module('addressBookServices', ['ngResource']);
 
-// addressBookServices.constant('RESOURCE_URI', 'assets/contacts.json');
-
 addressBookServices.factory('addressBook', ['$resource',
     function($resource) {
         var RESOURCE_URI = 'assets/contacts.json';

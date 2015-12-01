@@ -1,18 +1,19 @@
 'use strict';
 
 var chApp = angular.module('chApp', [
-    'ngRoute',
-    'addressBookControllers'
+    'addressBookControllers',
+    'addressBookServices',
+    'addressBookFilters'
 ]);
 
-chApp.config(['$routeProvider',
-    function($routeProvider) {
-        $routeProvider.
-        when('/contacts', {
-            templateUrl: 'index.html',
-            controller: 'listController'
-        }).
-        otherwise({
-            redirectTo: '/contacts'
-        });
-    }]);
+// chApp.config(['$routeProvider',
+//     function($routeProvider) {
+//         $routeProvider.
+//         when('/contacts', {
+//             templateUrl: 'index.html',
+//             controller: 'listController'
+//         }).
+//         otherwise({
+//             redirectTo: '/contacts'
+//         });
+//     }]);
