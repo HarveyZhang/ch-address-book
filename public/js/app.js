@@ -4,7 +4,8 @@ angular.module('chApp', [
     'ngRoute',
     'addressBookControllers',
     'addressBookServices',
-    'addressBookFilters'
+    'addressBookFilters',
+    'addressBookDirectives'
 ])
 .config(['$routeProvider', '$locationProvider',
     function($routeProvider, $locationProvider) {

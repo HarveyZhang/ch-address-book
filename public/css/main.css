@@ -10,6 +10,13 @@
     flex-direction: row;
 }
 
+a {
+    padding: .4em .2em;
+    color: #000;
+    display: flex;
+    text-decoration: none;
+}
+
 nav {
     width: 250px;
     overflow: auto;
@@ -29,13 +36,6 @@ nav ul {
     margin: 0;
     -webkit-user-select: none;
     cursor: default;
-}
-
-nav a {
-    padding: .4em .2em;
-    color: #000;
-    display: flex;
-    text-decoration: none;
 }
 
 nav a:hover {
@@ -87,4 +87,8 @@ nav a:hover {
     width: 100%;
     display: flex;
     justify-content: flex-end;
+}
+
+label.error {
+    color: red;
 }

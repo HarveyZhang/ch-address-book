@@ -20,6 +20,13 @@
             </label>
         </div>
     </section>
+    <section>
+        <div class="field">
+            <label class="error" ng-show="form.$error.required">
+                {{::'All fields are required.' | locale}}
+            </label>
+        </div>
+    </section>
     <div class="section-title"
          ng-show="selected">
         <label>
@@ -45,8 +52,13 @@
                 <input type="text"
                     ng-model="selected.phone"
                     ng-show="state.editing"
-                    required>
+                    required
+                    valid-phone-number
+                    name="phone">
             </div>
+            <label class="error" ng-show="form.phone.$error.validPhoneNumber">
+                {{::'Invalid phone number' | locale}}
+            </label>
         </div>
         <div class="field">
             <label>{{::'Email' | locale}}</label>
@@ -55,8 +67,12 @@
                 <input type="email"
                     ng-model="selected.email"
                     ng-show="state.editing"
-                    required>
+                    required
+                    name="email">
             </div>
+            <label class="error" ng-show="form.email.$error.email">
+                {{::'Invalid email' | locale}}
+            </label>
         </div>
         <div class="field">
             <label>{{::'Address' | locale}}</label>
