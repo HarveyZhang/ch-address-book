@@ -8,10 +8,14 @@ addressBookControllers
         var DEFAULT_TITLE = 'CH Address Book';
 
         $rootScope.title = DEFAULT_TITLE;
-        $scope.addressBook = addressBookService.get();
+        $scope.loading = true;
+        addressBookService.query().then(function(contacts) {
+            $scope.contacts = contacts;
+            $scope.loading = false;
+        })
 
-        $scope.entrySelected = function(index) {
-            $scope.selected = $scope.addressBook.contacts[index];
+        $scope.entrySelected = function(userId) {
+            $scope.selected = $scope.contacts[userId];
             $rootScope.title = DEFAULT_TITLE + ' - ' +
                 $scope.selected.firstname + ' ' + $scope.selected.lastname;
         }

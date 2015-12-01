@@ -1,20 +1,43 @@
 'use strict';
 
-var addressBookServices = angular.module('addressBookServices', ['ngResource']);
+var addressBookServices = angular.module('addressBookServices', []);
 
-addressBookServices.factory('addressBook', ['$resource',
-    function($resource) {
+addressBookServices.factory('addressBook', ['$http',
+    function($http) {
         var RESOURCE_URI = 'assets/contacts.json';
-
-        return $resource(RESOURCE_URI);
+        return {
+            query: function(enhance) {
+                return $http.get(RESOURCE_URI).then(function(result) {
+                    var contacts = result.data.contacts;
+                    if (enhance) {
+                        contacts = enhance(contacts);
+                    }
+                    return contacts;
+                });
+            }
+        };
     }]);
 
 addressBookServices.factory('addressBookService', ['addressBook',
     function(addressBook) {
-        var addressBooks = addressBook.get();
+        var model = addressBook.query(function(contacts) {
+            var contactsMap = {};
+            contacts.forEach(function(contact, index) {
+                contact.id = index;
+                contactsMap[index] = contact;
+            });
+            return contacts;
+        });
         return {
-            get: function(/* userId */) {
-                return addressBooks;
+            query: function() {
+                return model.then(function(model) {
+                    return model;
+                });
+            },
+            get: function(userId) {
+                return model.then(function(model) {
+                    return model[userId];
+                });
             },
             save: function() {
                 console.log('TODO: save');

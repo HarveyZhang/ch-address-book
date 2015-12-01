@@ -8,8 +8,8 @@
     </div>
     <div class="nav-entries">
         <ul>
-            <li ng-repeat="contact in addressBook.contacts | filter:query">
-                <a href="#" ng-click="entrySelected($index)">
+            <li ng-repeat="contact in contacts | filter:query">
+                <a href="#" ng-click="entrySelected(contact.id)">
                     {{contact.firstname}},&nbsp;{{contact.lastname}}
                 </a>
             </li>
