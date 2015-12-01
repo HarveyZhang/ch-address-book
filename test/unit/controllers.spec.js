@@ -24,15 +24,31 @@ describe('Address book controllers', function() {
             $controller('mainController', {$scope: scope});
         }));
 
-        it('should init state as { loading: true, editing: false }', function() {
+        it('should init state as { loading: true }', function() {
             expect(scope.state.loading).toBe(true);
         });
 
-        it('should create "contacts" model with 1 contact via $http.get()', function() {
-            expect(scope.contacts.length).toBe(0);
+        it('should create "contacts" model with 1 contact', function() {
+            expect(scope.contacts[0]).toBe(undefined);
             $httpBackend.flush();
-            expect(scope.contacts.length).toBe(1);
             expect(scope.contacts[0].firstname).toBe('Cameron');
+        });
+    });
+
+    // Test detailController functionality
+    describe('detailController', function() {
+        var scope, $rootScope, $controller;
+
+        beforeEach(inject(function($injector) {
+            $rootScope = $injector.get('$rootScope');
+            $controller = $injector.get('$controller');
+            scope = $rootScope.$new();
+            $controller('detailController', {$scope: scope});
+        }));
+
+        it('should init state as { loading: true, editing: false }', function() {
+            expect(scope.state.loading).toBe(true);
+            expect(scope.state.editing).toBe(false);
         });
     });
 });
