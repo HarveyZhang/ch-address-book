@@ -1,15 +1,18 @@
 'use strict';
 
 describe('Address book controllers', function() {
+    //load module
     beforeEach(module('chApp'));
-    beforeEach(module('addressBookService'));
 
+    // Test mainController functionality
     describe('mainController', function() {
-        var scope, $http;
+        var scope, $httpBackend, $rootScope, $controller;
 
-        beforeEach(inject(function(_$http_, $rootScope, $controller) {
-            $http = _$http_;
-            $http.expectGET('assets/contacts.json')
+        beforeEach(inject(function($injector) {
+            $httpBackend = $injector.get('$httpBackend');
+            $rootScope = $injector.get('$rootScope');
+            $controller = $injector.get('$controller');
+            $httpBackend.expectGET('assets/contacts.json')
                 .respond({'contacts': [{
                     'firstname':'Cameron',
                     'lastname':'Dubas',
@@ -19,12 +22,19 @@ describe('Address book controllers', function() {
                 }]});
             scope = $rootScope.$new();
             $controller('mainController', {$scope: scope});
-        }))
+        }));
+
+        it('should init state as { loading: true, editing: false }', function() {
+            expect(scope.state).toBe({
+                loading: true,
+                editing: false
+            });
+        });
 
         it('should create "contacts" model with 1 contact via $http.get()', function() {
-            expect(scope.contacts).toEqualData(undefined);
-            $http.flush()
-            expect(scope.contacts).toEqualData([{
+            expect(scope.contacts).toBe([]);
+            $httpBackend.flush();
+            expect(scope.contacts).toBe([{
                 'firstname':'Cameron',
                 'lastname':'Dubas',
                 'phone':'6047280012',
@@ -32,5 +42,5 @@ describe('Address book controllers', function() {
                 'email':'cameron@changeheroes.com'
             }]);
         });
-    })
+    });
 });

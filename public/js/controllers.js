@@ -10,6 +10,7 @@ angular.module('addressBookControllers', [])
             loading: true,
             editing: false
         };
+        $scope.contacts = [];
 
         addressBookService.query().then(function(contacts) {
             $scope.contacts = contacts;

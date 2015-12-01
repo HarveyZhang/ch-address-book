@@ -20,11 +20,11 @@ angular.module('addressBookServices', [])
     function(addressBook) {
         var model = addressBook.query(function(contacts) {
             var contactsMap = {};
-            contacts.forEach(function(contact, index) {
+            (contacts || []).forEach(function(contact, index) {
                 contact.id = index;
                 contactsMap[index] = contact;
             });
-            return contacts;
+            return contacts || [];
         });
         return {
             query: function() {
