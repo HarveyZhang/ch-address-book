@@ -12,7 +12,7 @@
     <div class="nav-entries">
         <ul>
             <li ng-repeat="(userId, contact) in contacts | search:query | orderBy:'id'">
-                <a ng-href="contacts/{{userId}}">
+                <a ng-href="#/contacts/{{userId}}">
                     {{contact.firstname}},&nbsp;{{contact.lastname}}
                 </a>
             </li>

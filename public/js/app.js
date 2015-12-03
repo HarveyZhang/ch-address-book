@@ -19,5 +19,5 @@ angular.module('chApp', [
         });
 
         // use HTML5 strategy if available
-        $locationProvider.html5Mode(true);
+        // $locationProvider.html5Mode(true);
     }]);
